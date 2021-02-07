@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         while (onConnect == false) {
             WifiInfo info = wifiManager.getConnectionInfo();
             int ip = info.getIpAddress();
-            if (ip != 0
+            if (ip != 0) {
                 ipAddress = Formatter.formatIpAddress(ip);
                 text.setText(ipAddress);
                 text.append("\nSSID WIFI: ");
