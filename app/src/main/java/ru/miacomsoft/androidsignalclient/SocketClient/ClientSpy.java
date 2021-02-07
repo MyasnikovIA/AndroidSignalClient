@@ -176,6 +176,15 @@ public class ClientSpy {
         process = false;
     }
 
+    /**
+     * отправка сообщения сигнальному серверу
+    */
+    public void send(String cmd) {
+        try {
+            outputStream.write((cmd+ "\r\n\r\n").getBytes());
+        } catch (IOException e) {
+        }
+    }
 
     class ThreadTEstRead implements Runnable {
         @Override
