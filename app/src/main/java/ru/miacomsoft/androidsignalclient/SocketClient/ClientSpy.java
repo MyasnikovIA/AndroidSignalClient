@@ -125,8 +125,6 @@ public class ClientSpy {
                         return;
                     }
                     ////----------------------------------------------------------------------
-
-
                     try {
                         outputStream.write((val + "\r\n\r\n").getBytes());
                     } catch (IOException e) {
@@ -134,6 +132,13 @@ public class ClientSpy {
                 }
 
 
+            } else {
+                if (cmd.indexOf("ping") != -1){
+                    try {
+                        outputStream.write(("connect:" + DeviceName).getBytes());
+                    } catch (IOException e) {
+                    }
+                }
             }
         }
     }
@@ -167,7 +172,7 @@ public class ClientSpy {
     }
 
     public void start() {
-        Toast.makeText(context, "Start Client Spy service", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Start Signal Client", Toast.LENGTH_SHORT).show();
         Thread1 = new Thread(new ThreadRun());
         Thread1.start();
     }
@@ -178,10 +183,10 @@ public class ClientSpy {
 
     /**
      * отправка сообщения сигнальному серверу
-    */
+     */
     public void send(String cmd) {
         try {
-            outputStream.write((cmd+ "\r\n\r\n").getBytes());
+            outputStream.write((cmd + "\r\n\r\n").getBytes());
         } catch (IOException e) {
         }
     }
