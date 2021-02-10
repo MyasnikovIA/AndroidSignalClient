@@ -13,7 +13,7 @@ public class ServiceExample extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        ClientSpy sp = new  ClientSpy(getBaseContext(),"192.168.0.3",8266,"HUAWEI_ATI-l","123");
+        sp = new  ClientSpy(getBaseContext(),"192.168.0.3",8266,"HUAWEI_ATI-l","123","");
         sp.start();
     }
 
@@ -22,6 +22,7 @@ public class ServiceExample extends Service {
     }
 
     public void onDestroy() {
+        sp.stop();
         super.onDestroy();
     }
 
